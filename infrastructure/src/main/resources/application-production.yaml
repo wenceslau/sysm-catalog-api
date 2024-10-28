@@ -1,0 +1,12 @@
+keycloak:
+  realm: ${KEYCLOAK_REALM}
+  host: ${KEYCLOAK_HOST}
+
+web-server:
+  port: ${SERVER_PORT}
+  context_path: ${SERVER_CONTEXT_PATH}
+  undertow_threads_worker: 32
+  undertow_threads_io: 2
+
+log:
+  level_root: ${LOG_LEVEL_ROOT}

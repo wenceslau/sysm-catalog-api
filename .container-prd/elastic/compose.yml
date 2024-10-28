@@ -1,0 +1,54 @@
+networks:
+  ntw_elastic:
+    name: ntw_elastic
+    external: true
+
+volumes:
+  vol_adm_catalog_elastic_01_prd:
+    name: vol_adm_catalog_elastic_01_prd
+    external: true
+  vol_adm_catalog_logstash_prd:
+    name: vol_adm_catalog_logstash_prd
+    external: true
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.9
+    container_name: ctn_adm_videos_elasticsearch_prd
+    restart: on-failure
+    volumes:
+      - vol_adm_catalog_elastic_01_prd:/usr/share/elasticsearch/data
+    environment:
+      - "discovery.type=single-node"
+    ports:
+      - '9200:9200'
+      - '9300:9300'
+    networks:
+      - ntw_elastic
+
+  srv_kibana_prd:
+    image: docker.elastic.co/kibana/kibana:7.17.9
+    container_name: ctn_adm_videos_kibana_prd
+    restart: on-failure
+    ports:
+      - '5601:5601'
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+    depends_on:
+      - elasticsearch
+    networks:
+      - ntw_elastic
+
+  srv_logstash_prd:
+    image: docker.elastic.co/logstash/logstash:7.17.9
+    container_name: ctn_adm_videos_logstash_prd
+    restart: on-failure
+    volumes:
+      - vol_adm_catalog_logstash_prd:/usr/share/logstash/pipeline:ro
+    ports:
+      - "25826:25826"
+      - "5044:5044"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - ntw_elastic

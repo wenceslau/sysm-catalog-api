@@ -1,0 +1,15 @@
+web-server:
+  port: ${SERVER_PORT:8081}
+  context_path: ${SERVER_CONTEXT_PATH:/api}
+  undertow_threads_worker: 32
+  undertow_threads_io: 2
+
+log:
+  level_root: ${LOG_LEVEL_ROOT:INFO}
+
+# Spring config override for dev environment.
+spring:
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+      - org.springframework.boot.autoconfigure.security.oauth2.resource.servlet.OAuth2ResourceServerAutoConfiguration

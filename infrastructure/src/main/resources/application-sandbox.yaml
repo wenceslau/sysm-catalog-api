@@ -1,0 +1,12 @@
+keycloak:
+  realm: ${KEYCLOAK_REALM:sys-monkey}
+  host: ${KEYCLOAK_HOST:https://auth.sys-monkey.com}
+
+web-server:
+  port: ${SERVER_PORT:8081}
+  context_path: ${SERVER_CONTEXT_PATH:/api}
+  undertow_threads_worker: 10
+  undertow_threads_io: 2
+
+log:
+  level_root: ${LOG_LEVEL_ROOT:INFO}

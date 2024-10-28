@@ -1,0 +1,41 @@
+networks:
+  ntw_adm_catalog:
+    name: ntw_adm_catalog
+    external: true
+
+volumes:
+  vol_adm_catalog_mysql_prd:
+    name: vol_adm_catalog_mysql_prd
+    external: true
+
+services:
+  srv_adm_catalog_mysql_prd:
+    container_name: ctn_adm_catalog_mysql_prd
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_HOST: ${MYSQL_ROOT_HOST}
+    security_opt:
+      - seccomp:unconfined
+    ports:
+      - 3305:3306
+    user: 'root'
+    volumes:
+      - vol_adm_catalog_mysql_prd:/var/lib/mysql
+    networks:
+      - ntw_adm_catalog
+
+  srv_adm_catalog_rabbitmq_prd:
+    container_name: ctn_adm_catalog_rabbitmq_prd
+    image: rabbitmq:3-management
+    environment:
+      RABBITMQ_ERLANG_COOKIE: ${RABBITMQ_ERLANG_COOKIE}
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+      RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_DEFAULT_VHOST}
+    ports:
+        - 5672:5672
+        - 15672:15672
+    networks:
+      - ntw_adm_catalog
