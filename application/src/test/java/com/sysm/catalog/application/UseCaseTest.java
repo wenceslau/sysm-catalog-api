@@ -11,9 +11,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Tag("uni")
 @ExtendWith(MockitoExtension.class)
-public abstract class UseCaseTest implements BeforeEachCallback {
-
+@Tag("unitTest")
+public abstract class UseCaseTest {
 
 }
