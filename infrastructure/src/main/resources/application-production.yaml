@@ -1,3 +1,6 @@
+graphql:
+  graphiql: false
+
 keycloak:
   realm: ${KEYCLOAK_REALM}
   host: ${KEYCLOAK_HOST}

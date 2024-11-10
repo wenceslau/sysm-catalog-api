@@ -1,3 +1,6 @@
+graphql:
+  graphiql: true
+
 keycloak:
   realm: test
   host: http://test:8443

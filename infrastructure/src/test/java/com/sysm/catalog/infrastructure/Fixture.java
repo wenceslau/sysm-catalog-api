@@ -1,12 +1,8 @@
-package com.sysm.catalog.application;
+package com.sysm.catalog.infrastructure;
 
 import com.sysm.catalog.domain.category.Category;
-import com.sysm.catalog.domain.genre.Genre;
-import com.sysm.catalog.domain.utils.IdUtils;
 import net.datafaker.Faker;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.UUID;
 
 import static com.sysm.catalog.domain.utils.InstantUtils.now;
@@ -24,7 +20,7 @@ public final class Fixture {
     }
 
     public static Double duration() {
-        return FAKER.options().option(90.0, 120.0, 150.0);
+        return FAKER.options().option(120.0, 15.5, 35.5, 10.0, 2.0);
     }
 
     public static boolean bool() {
@@ -33,9 +29,9 @@ public final class Fixture {
 
     public static String title() {
         return FAKER.options().option(
-            "System Design in the Free Market in practice",
-            "Don’t make these mistakes when working with Microservices",
-            "Mutation Tests. You do not test your software correctly"
+                "System Design no Mercado Livre na prática",
+                "Não cometa esses erros ao trabalhar com Microsserviços",
+                "Testes de Mutação. Você não testa seu software corretamente"
         );
     }
 
@@ -79,21 +75,6 @@ public final class Fixture {
                 now(),
                 null
             );
-        }
-    }
-
-    public static final class Genres {
-
-        public static Genre tech() {
-            return Genre.with(IdUtils.uniqueId(), "Technology", true, Set.of("c456"), now(), now(), null);
-        }
-
-        public static Genre business() {
-            return Genre.with(IdUtils.uniqueId(), "Business", false, new HashSet<>(), now(), now(), now());
-        }
-
-        public static Genre marketing() {
-            return Genre.with(IdUtils.uniqueId(), "Marketing", true, Set.of("c123"), now(), now(), null);
         }
     }
 
