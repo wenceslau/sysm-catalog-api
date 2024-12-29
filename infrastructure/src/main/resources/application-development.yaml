@@ -1,3 +1,8 @@
+elasticsearch:
+  uris: http://localhost:9200
+  username: elastic
+  password: elastic
+
 graphql:
   graphiql: true
 
@@ -8,11 +13,12 @@ web-server:
   undertow_threads_io: 2
 
 log:
-  level_root: ${LOG_LEVEL_ROOT:DEBUG}
+  level_root: ${LOG_LEVEL_ROOT:INFO}
 
 # Spring config override for dev environment.
 spring:
   autoconfigure:
     exclude:
+      - org.springframework.boot.autoconfigure.data.elasticsearch.ElasticsearchRepositoriesAutoConfiguration
       - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
       - org.springframework.boot.autoconfigure.security.oauth2.resource.servlet.OAuth2ResourceServerAutoConfiguration

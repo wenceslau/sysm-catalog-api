@@ -1,3 +1,11 @@
+elasticsearch:
+  uris: http://localhost:9200
+  username: elastic
+  password: elastic
+
+graphql:
+  graphiql: false
+
 keycloak:
   realm: test
   host: http://test:8443

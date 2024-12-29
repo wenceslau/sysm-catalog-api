@@ -1,18 +1,27 @@
 services:
-  mysql_dev:
-    container_name: adm_videos_mysql_dev
-    image: mysql:8.4
-    environment:
-      MYSQL_ROOT_PASSWORD: 123456
-      MYSQL_DATABASE: sysm_adm_videos_dev
-      MYSQL_ROOT_HOST: '%'
-    security_opt:
-      - seccomp:unconfined
-    ports:
-      - 3307:3306
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.9
+    container_name: elk_es01
+    restart: on-failure
     volumes:
-      - adm_catalog_mysql_vol_dev:/var/lib/mysql:rw
+      - vol_elastic:/usr/share/elasticsearch/data
+    environment:
+      - "discovery.type=single-node"
+      - "bootstrap.memory_lock=true"
+      - "cluster.name=adm_videos_cluster"
+      - "node.name=codeflix"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - '9200:9200'
+      - '9300:9300'
+    networks:
+      - ntw_elastic
 
 volumes:
-    adm_catalog_mysql_vol_dev:
-      name: adm_catalog_mysql_vol_dev
+  vol_elastic:
+      name: vol_elastic
+
+networks:
+    ntw_elastic:
+        name: ntw_elastic
+        external: true

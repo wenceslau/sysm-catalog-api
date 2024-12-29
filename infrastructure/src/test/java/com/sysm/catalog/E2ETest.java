@@ -1,4 +1,4 @@
-package com.sysm.catalog.infrastructure;
+package com.sysm.catalog;
 
 import com.sysm.catalog.infrastructure.configuration.WebServerConfig;
 import org.junit.jupiter.api.Tag;

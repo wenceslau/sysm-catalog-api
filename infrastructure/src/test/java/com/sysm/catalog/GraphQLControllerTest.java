@@ -1,4 +1,4 @@
-package com.sysm.catalog.infrastructure;
+package com.sysm.catalog;
 
 import org.junit.jupiter.api.Tag;
 import org.springframework.boot.test.autoconfigure.graphql.GraphQlTest;

@@ -1,3 +1,11 @@
+elasticsearch:
+  uris: ${ELASTICSEARCH_URIS:http://localhost:9200}
+  username: ${ELASTICSEARCH_USERNAME:elastic}
+  password: ${ELASTICSEARCH_PASSWORD:elastic}
+
+graphql:
+  graphiql: false
+
 keycloak:
   realm: ${KEYCLOAK_REALM:sys-monkey}
   host: ${KEYCLOAK_HOST:https://auth.sys-monkey.com}

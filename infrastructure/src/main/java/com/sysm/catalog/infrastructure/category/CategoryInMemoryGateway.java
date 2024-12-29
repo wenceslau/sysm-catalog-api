@@ -14,7 +14,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Component
-@Profile("development")
+@Profile({"development", "test-integration"})
 public class CategoryInMemoryGateway implements CategoryGateway {
 
     private final Map<String, Category> db;

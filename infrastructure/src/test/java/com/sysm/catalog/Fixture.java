@@ -1,4 +1,4 @@
-package com.sysm.catalog.infrastructure;
+package com.sysm.catalog;
 
 import com.sysm.catalog.domain.category.Category;
 import net.datafaker.Faker;
