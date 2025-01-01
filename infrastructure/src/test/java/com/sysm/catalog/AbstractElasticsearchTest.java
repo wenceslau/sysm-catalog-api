@@ -18,7 +18,7 @@ import java.util.Collection;
         basePackages = "com.sysm.catalog",
         useDefaultFilters = false,
         includeFilters = {
-                @ComponentScan.Filter(type = FilterType.REGEX, pattern = ".*ElasticsearchGateway")
+                @ComponentScan.Filter(type = FilterType.REGEX, pattern = ".*Gateway")
         }
 )
 @DataElasticsearchTest

@@ -21,7 +21,7 @@ public class CategoryDocument {
     @Field(type = FieldType.Text, name = "description")
     private String description;
 
-    @Field(type = FieldType.Date, name = "active")
+    @Field(type = FieldType.Boolean, name = "active")
     private boolean active;
 
     @Field(type = FieldType.Date, name = "created_at")
@@ -48,7 +48,7 @@ public class CategoryDocument {
         this.deletedAt = deletedAt;
     }
 
-    public static CategoryDocument fromEntity(Category category) {
+    public static CategoryDocument from(Category category) {
         return new CategoryDocument(
             category.id(),
             category.name(),
@@ -60,7 +60,7 @@ public class CategoryDocument {
         );
     }
 
-    public Category toEntity() {
+    public Category toCategory() {
         return Category.with(
             id,
             name,
@@ -72,7 +72,7 @@ public class CategoryDocument {
         );
     }
 
-    public String getId() {
+    public String id() {
         return id;
     }
 
@@ -81,7 +81,7 @@ public class CategoryDocument {
         return this;
     }
 
-    public String getName() {
+    public String name() {
         return name;
     }
 
@@ -90,7 +90,7 @@ public class CategoryDocument {
         return this;
     }
 
-    public String getDescription() {
+    public String description() {
         return description;
     }
 
@@ -99,7 +99,7 @@ public class CategoryDocument {
         return this;
     }
 
-    public boolean isActive() {
+    public boolean active() {
         return active;
     }
 
@@ -108,7 +108,7 @@ public class CategoryDocument {
         return this;
     }
 
-    public Instant getCreatedAt() {
+    public Instant createdAt() {
         return createdAt;
     }
 
@@ -117,7 +117,7 @@ public class CategoryDocument {
         return this;
     }
 
-    public Instant getUpdatedAt() {
+    public Instant updatedAt() {
         return updatedAt;
     }
 
@@ -126,7 +126,7 @@ public class CategoryDocument {
         return this;
     }
 
-    public Instant getDeletedAt() {
+    public Instant deletedAt() {
         return deletedAt;
     }
 
