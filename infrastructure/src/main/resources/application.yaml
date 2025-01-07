@@ -5,6 +5,39 @@ elasticsearch:
 graphql:
   graphiql: false
 
+kafka:
+  auto-create-topics: false
+  pool-timeout: 1_000
+  consumers:
+    categories:
+      auto-offset-reset: earliest
+      concurrency: 1
+      id: kafka-listener-categories
+      topics: adm_videos_mysql.adm_videos.categories
+      group-id: catalogo-service
+      max-attempts: 4
+    cast-members:
+      auto-offset-reset: earliest
+      concurrency: 1
+      id: kafka-listener-castmembers
+      topics: adm_videos_mysql.adm_videos.cast_members
+      group-id: catalogo-service
+      max-attempts: 4
+    genres:
+      auto-offset-reset: earliest
+      concurrency: 1
+      id: kafka-listener-genres
+      topics: adm_videos_mysql.adm_videos.genres
+      group-id: catalogo-service
+      max-attempts: 4
+    videos:
+      auto-offset-reset: earliest
+      concurrency: 1
+      id: kafka-listener-videos
+      topics: adm_videos_mysql.adm_videos.videos
+      group-id: catalogo-service
+      max-attempts: 4
+
 server:
   port: ${web-server.port}
   servlet:

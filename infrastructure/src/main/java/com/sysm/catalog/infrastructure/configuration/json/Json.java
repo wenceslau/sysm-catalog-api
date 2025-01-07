@@ -1,5 +1,6 @@
 package com.sysm.catalog.infrastructure.configuration.json;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
@@ -24,9 +25,15 @@ public enum Json {
         return invoke(() -> mapper().writeValueAsString(value));
     }
 
+
     public static <T> T readValue(String json, Class<T> clazz) {
         return invoke(() -> mapper().readValue(json, clazz));
     }
+
+    public static <T> T readValue(final String json, final TypeReference<T> clazz) {
+        return invoke(() -> INSTANCE.mapper.readValue(json, clazz));
+    }
+
 
     private final ObjectMapper mapper = new Jackson2ObjectMapperBuilder()
             .dateFormat(new StdDateFormat()) //format ISO 8601 "yyyy-MM-dd'T'HH:mm:ss.SSSX"
